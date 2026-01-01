@@ -1,44 +1,44 @@
-# Project Overview
-This project is a comprehensive introduction to Machine Learning, combining theoretical foundations with a practical implementation using the famous Titanic dataset. The primary goal is to predict passenger survival based on various features such as age, class, and socio-economic status. The repository includes detailed study notes on ML metrics and a hands-on assignment focused on building and optimizing classification models.
+# Project Overview: Titanic Survival Prediction
+This project focuses on the end-to-end process of analyzing the Titanic dataset and developing machine learning models to predict passenger survival. The goal is to classify passengers as survivors (1) or victims (0) by leveraging data cleaning, exploratory analysis, and optimized classification algorithms.
 
-# Part 1 – Data Analysis & Preprocessing
+# Part 1 – Data Analysis & Preprocessing (EDA)
 Objectives:
 
-Exploratory Data Analysis (EDA): Understand the distribution of passenger data and identify correlations between features (e.g., how passenger class or gender influenced survival rates).
+Data Cleaning: Handled missing values in Age and Embarked and removed irrelevant or high-cardinality features such as PassengerId, Name, Ticket, and Cabin to reduce noise.
 
-Feature Selection: Identify key predictors for the model, specifically focusing on Pclass, Sex, and engineered features.
+Feature Engineering: * Extracted Titles from names to capture social status.
 
-Feature Engineering: Enhance the dataset by creating new informative columns, such as IsAlone, to capture social dynamics that impacted survival.
+Created AgeGroup and FareGroup bins to transform continuous numerical data into meaningful categories.
 
-Data Transformation: Encode categorical variables (like gender) into numerical formats suitable for machine learning algorithms.
+Engineered the IsAlone feature based on family size (SibSp + Parch) to identify social impact on survival.
 
-Data Scaling: Apply StandardScaler to normalize numerical features, ensuring compatibility and better performance for distance-based models like K-Nearest Neighbors (KNN).
+Outlier Detection: Used boxplots and statistical analysis to detect and handle outliers in Fare and Age distributions.
 
-Train-Test Split: Implement a robust validation strategy by splitting the data into training (80%) and testing (20%) sets using a fixed random_state for reproducibility.
+Visual Exploration: Generated histograms, countplots, and correlation heatmaps to visualize the relationships between gender, class, and survival rates.
+
+Data Encoding: Converted categorical features (Gender, Embarked, Titles) into numerical values using mapping and One-Hot encoding for model compatibility.
 
 # Part 2 – Machine Learning Models
 Objectives:
 
-Baseline Establishment: Use a DummyClassifier to set a performance floor, providing a point of comparison for more complex models.
+Baseline Establishment: Implemented a DummyClassifier as a baseline to evaluate whether the trained models provide a significant predictive lift.
 
-Model Implementation: Develop and compare multiple supervised learning algorithms:
+Feature Scaling: Applied StandardScaler to ensure all numerical features are on the same scale, which is critical for distance-based models like KNN.
 
-Decision Tree Classifier: An intuitive model used to understand decision boundaries.
+Model Implementation: Developed and trained two primary classification models:
 
-K-Nearest Neighbors (KNN): A proximity-based classifier used to identify patterns among similar passengers.
+Decision Tree Classifier
 
-Hyperparameter Tuning: Systematically investigate model parameters to maximize performance:
+K-Nearest Neighbors (KNN)
 
-For Decision Trees: Tune max_depth and splitting criteria (Gini vs. Entropy) to prevent overfitting.
+Hyperparameter Tuning: * Investigated Decision Tree depth (max_depth) and splitting criteria to find the optimal balance between bias and variance.
 
-For KNN: Optimize the number of neighbors (k) and distance metrics to achieve the best accuracy.
+Tested various values of k and distance metrics for the KNN model to maximize accuracy.
 
-Performance Evaluation: Analyze model success using a comprehensive suite of metrics:
+Performance Evaluation: Measured success using a comprehensive set of metrics:
 
-Accuracy: Overall correctness of the model.
+Accuracy for overall correctness.
 
-Precision & Recall: Specifically evaluating the model's ability to correctly identify survivors without excessive false positives.
+Precision, Recall, and F1-score to assess the model's reliability in identifying survivors.
 
-F1-Score: The harmonic mean of precision and recall for a balanced view of model quality.
-
-Visual Interpretation: Utilize Confusion Matrices to visualize true positives versus false negatives, providing deep insight into where the model succeeds and where it fails.
+Confusion Matrix to visualize and interpret the types of classification errors made by the models.
